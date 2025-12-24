@@ -4,141 +4,124 @@ import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 
 const router = useRouter()
-
 </script>
 
-
-
-
 <template>
-  <div class="signuppage-wrapper">
-    <div class="signuppage-container">
-      <div class="phone-icon">
-        <img class="logo_svg" src="@/assets/gmail-theme.svg" alt="logo" />
+  <div class="auth-page">
+    <div class="auth-container">
+      <div class="auth-icon">
+        <img class="icon-image" src="@/assets/gmail-theme.svg" alt="logo" />
       </div>
 
-      <div class="head-texts">
-        <p class="headings" style="color: var(--text-primary);">Enter</p>
-        <p class="headings" style="color: var(--theme);">Your Email</p>
-        <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.5rem;">Welcome to Kyakwata Ug.<br>No passwords needed-just quick and secure.</p>
+      <div class="auth-header">
+        <p class="auth-title" style="color: var(--text-primary);">Enter</p>
+        <p class="auth-title" style="color: var(--theme);">Your Email</p>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.5rem;">
+          Welcome to Kyakwata Ug.<br />
+          No passwords needed-just quick and secure.
+        </p>
       </div>
 
-      <div class="phone-entry-div">
+      <div class="auth-input-section">
         <p style="color: var(--text-primary);">Email:</p>
-        <div class="input-grouper">
-          <input class="input" type="text" placeholder="eg. email@gmail.com">
+        <div class="input-wrapper">
+          <input class="text-input" type="text" placeholder="eg. email@gmail.com" />
         </div>
       </div>
 
-
-      <div class="terms-message">
+      <div class="terms-text">
         <p>By continuing, you agree to terms and conditions of Kyakwata Ug.</p>
       </div>
 
-
-      <div class="secure-private-card">
-        <div class="safe-icon-div">
-          <img class="logo_svg" src="@/assets/shield-theme.svg" alt="logo" />
+      <div class="security-card">
+        <div class="security-icon">
+          <img class="icon-image" src="@/assets/shield-theme.svg" alt="logo" />
         </div>
-        <div class="safe-texts">
-          <p style="color: var(--text-primary);margin-bottom: 0.3rem;">Safe & Private</p>
-          <p style="color: var(--text-secondary); font-size: 0.8rem;">Your email is encrypted and never shared.
-            We only use it for account verification and security.</p>
+        <div class="security-text">
+          <p style="color: var(--text-primary); margin-bottom: 0.3rem;">
+            Safe & Private
+          </p>
+          <p style="color: var(--text-secondary); font-size: 0.8rem;">
+            Your email is encrypted and never shared.
+            We only use it for account verification and security.
+          </p>
         </div>
       </div>
 
-      <div class="send-code-btn" @click="router.push('/home')">
+      <div class="primary-action-btn" @click="router.push('/home')">
         <p>Login / Signup</p>
       </div>
-
     </div>
   </div>
-
 </template>
 
-
 <style scoped>
-.signuppage-wrapper {
-  background-image: linear-gradient(120deg,
-      #2c0062,
-      #1b003b);
+.auth-page {
+  background-image: linear-gradient(120deg, #2c0062, #1b003b);
   height: 100dvh;
   display: flex;
   align-items: flex-end;
 }
 
-
-.signuppage-container {
-  /* background-color: rgb(13, 255, 0); */
+.auth-container {
   width: 100%;
   height: 92dvh;
-  /* border: 1px solid red; */
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  /* gap: 1.5rem; */
   margin-bottom: 1rem;
 }
 
-
-.phone-icon {
+/* Icon */
+.auth-icon {
   width: 5rem;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   border: 2px solid #8935ff5f;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--border-radius);
   background-color: #2c0062;
-  box-shadow:
-    0 0 25px 10px rgba(138, 92, 246, 0.2);
+  box-shadow: 0 0 25px 10px rgba(138, 92, 246, 0.2);
 }
 
-.phone-icon img {
+.icon-image {
   width: 50%;
 }
 
-
-
-
-
-/* Headings */
-.head-texts {
+/* Header */
+.auth-header {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   width: 75%;
-  /* border: 1px solid white; */
   gap: 0.8rem;
 }
 
-.headings {
+.auth-title {
   font-size: 2rem;
   font-weight: bold;
 }
 
-
-
-/* Phone entries divs*/
-.phone-entry-div {
+/* Input section */
+.auth-input-section {
   width: 90%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.input-grouper {
+.input-wrapper {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  /* border: 1px solid white; */
   width: 100%;
 }
 
-.t256-div {
+.country-code-box {
   height: var(--div-height-primary);
   background-color: #3b0084;
   display: flex;
@@ -149,28 +132,20 @@ const router = useRouter()
   border-radius: var(--border-radius);
 }
 
-.input {
+.text-input {
   color: var(--text-secondary);
-  height: 100%;
   width: 100%;
   border-radius: var(--border-radius);
   border: none;
   outline: none;
-  background-color: transparent;
-  outline-color: transparent;
   padding: 0 1rem;
   font-size: 1.2rem;
-  flex: 1;
   height: var(--div-height-primary);
-  border: 0px;
-  outline: transparent;
   background-color: #3b0084;
 }
 
-
-
-/* Termas message */
-.terms-message {
+/* Terms */
+.terms-text {
   width: 90%;
   color: var(--text-secondary);
   font-size: 0.75rem;
@@ -178,12 +153,10 @@ const router = useRouter()
   margin-top: -0.8rem;
 }
 
-
-/* Secure and Private assurance card */
-.secure-private-card {
+/* Security card */
+.security-card {
   height: 6rem;
   width: 90%;
-  border: 1px solid red;
   border-radius: var(--border-radius);
   border: 1px solid #2c0062;
   background-color: #1800601f;
@@ -192,10 +165,9 @@ const router = useRouter()
   padding: 0.5rem;
 }
 
-.safe-icon-div {
-  /* width: 35%; */
+.security-icon {
   height: 50%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   border: 1px solid #2c0062;
   border-radius: 1rem;
   display: flex;
@@ -203,14 +175,14 @@ const router = useRouter()
   justify-content: center;
 }
 
-.safe-icon-div img {
-  width: 70%;
-  height: 1/1;
+.security-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-
-/* Send code button */
-.send-code-btn {
+/* Button */
+.primary-action-btn {
   width: 90%;
   height: var(--div-height-secondary);
   background-color: var(--theme2);
