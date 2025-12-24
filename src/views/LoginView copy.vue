@@ -1,10 +1,31 @@
 <script setup>
-// import router from '@/router';
-import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 
-const router = useRouter()
+const isCodeRequested = ref(false)
 
+const codes = ref(['', '', '', '', '', ''])
+
+const onInput = (e, index) => {
+  const value = e.target.value.replace(/\D/g, '')
+  codes.value[index] = value.charAt(0) || ''
+
+  if (value && index < 5) {
+    e.target.nextElementSibling?.focus()
+  }
+}
+
+const onBackspace = (e, index) => {
+  if (!codes.value[index] && index > 0) {
+    e.target.previousElementSibling?.focus()
+  }
+}
+
+const onPaste = (e) => {
+  const pasted = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6)
+  pasted.split('').forEach((digit, i) => {
+    codes.value[i] = digit
+  })
+}
 </script>
 
 
@@ -14,27 +35,36 @@ const router = useRouter()
   <div class="signuppage-wrapper">
     <div class="signuppage-container">
       <div class="phone-icon">
-        <img class="logo_svg" src="@/assets/gmail-theme.svg" alt="logo" />
+        <img class="logo_svg" src="@/assets/phone-theme.svg" alt="logo" />
       </div>
 
       <div class="head-texts">
-        <p class="headings" style="color: var(--text-primary);">Enter</p>
-        <p class="headings" style="color: var(--theme);">Your Email</p>
-        <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.5rem;">Welcome to Kyakwata Ug.<br>No passwords needed-just quick and secure.</p>
+        <p class="headings" style="color: var(--text-primary);">Enter Your</p>
+        <p class="headings" style="color: var(--theme);">Phone Number</p>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.5rem;">We'll send you a verification
+          code. No passwords needed-just quick and secure.</p>
       </div>
 
       <div class="phone-entry-div">
-        <p style="color: var(--text-primary);">Email:</p>
+        <p style="color: var(--text-primary);">Phone Number</p>
         <div class="input-grouper">
-          <input class="input" type="text" placeholder="eg. email@gmail.com">
+          <div class="t256-div">
+            <p style="color: var(--text-primary);">+256</p>
+          </div>
+          <input class="input" type="text">
         </div>
       </div>
 
 
       <div class="terms-message">
-        <p>By continuing, you agree to terms and conditions of Kyakwata Ug.</p>
+        <p>By continuing, you agree to receive SMS verification codes. Standard messaging rates may apply.</p>
       </div>
 
+      <div class="fill-in-6digit-code" @paste="onPaste" v-if="isCodeRequested">
+        <input v-for="(digit, index) in codes" :key="index" class="code-input" type="text" inputmode="numeric"
+          maxlength="1" v-model="codes[index]" @input="onInput($event, index)"
+          @keydown.backspace="onBackspace($event, index)" />
+      </div>
 
       <div class="secure-private-card">
         <div class="safe-icon-div">
@@ -42,13 +72,13 @@ const router = useRouter()
         </div>
         <div class="safe-texts">
           <p style="color: var(--text-primary);margin-bottom: 0.3rem;">Safe & Private</p>
-          <p style="color: var(--text-secondary); font-size: 0.8rem;">Your email is encrypted and never shared.
+          <p style="color: var(--text-secondary); font-size: 0.8rem;">Your phone number is encrypted and never shared.
             We only use it for account verification and security.</p>
         </div>
       </div>
 
-      <div class="send-code-btn" @click="router.push('/home')">
-        <p>Login / Signup</p>
+      <div class="send-code-btn" @click="isCodeRequested = true">
+        <p>Request Code</p>
       </div>
 
     </div>
@@ -175,7 +205,32 @@ const router = useRouter()
   color: var(--text-secondary);
   font-size: 0.75rem;
   line-height: 1.1rem;
-  margin-top: -0.8rem;
+}
+
+/* This is code insertion */
+.fill-in-6digit-code {
+  /* height: 4rem; */
+  /* border: 1px solid rgb(189, 188, 188); */
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.code-input {
+  color: var(--text-secondary);
+  height: 3rem;
+  width: 2.9rem;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  outline-color: transparent;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+  border: 0px;
+  outline: transparent;
+  background-color: #3b0084;
 }
 
 
