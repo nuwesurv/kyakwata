@@ -25,7 +25,7 @@ const router = useRouter()
       <div class="auth-input-section">
         <p style="color: var(--text-primary);">Email:</p>
         <div class="input-wrapper">
-          <input class="text-input" type="text" placeholder="eg. email@gmail.com" />
+          <input class="text-input" type="email" autocomplete="email" placeholder="eg. email@gmail.com" />
         </div>
       </div>
 
@@ -81,7 +81,7 @@ const router = useRouter()
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius1);
   background-color: #2c0062;
   box-shadow: 0 0 25px 10px rgba(138, 92, 246, 0.2);
 }
@@ -121,28 +121,24 @@ const router = useRouter()
   width: 100%;
 }
 
-.country-code-box {
-  height: var(--div-height-primary);
-  background-color: #3b0084;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4rem;
-  font-size: 1.2rem;
-  border-radius: var(--border-radius);
-}
-
 .text-input {
   color: var(--text-secondary);
   width: 100%;
-  border-radius: var(--border-radius);
   border: none;
   outline: none;
-  padding: 0 1rem;
+  padding: 0.3rem 1rem;
   font-size: 1.2rem;
-  height: var(--div-height-primary);
   background-color: #3b0084;
+  height: 3rem;
+  border-radius: 1.5rem;
 }
+
+.text-input:focus{
+  border: 1px solid var(--theme);
+
+}
+
+
 
 /* Terms */
 .terms-text {
@@ -157,7 +153,7 @@ const router = useRouter()
 .security-card {
   height: 6rem;
   width: 90%;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius2);
   border: 1px solid #2c0062;
   background-color: #1800601f;
   display: flex;
@@ -181,16 +177,19 @@ const router = useRouter()
   justify-content: center;
 }
 
+
+
+
 /* Button */
 .primary-action-btn {
   width: 90%;
-  height: var(--div-height-secondary);
+  height: 3rem;
+  border-radius: 1.5rem;
   background-color: var(--theme2);
   color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--border-radius);
   font-size: 1.2rem;
 }
 </style>

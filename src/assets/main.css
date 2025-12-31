@@ -8,19 +8,19 @@
 :root {
   --theme: #8B5CF6;
   --theme2: #7641f2;
-  --theme-highlight: #8a5df4;
+  --theme3: #7641f236;
+  --theme-highlight: #aa87fc;
   --background-primary: #333e45;
   --background-secondary: #eaf5ff;
   
   --text-primary: #d1e3fc;
-  --text-secondary: #92a2b9;
+  --text-secondary: #839dc3bf;
 
   --border-primary: #E2E8F0;
   --border-secondary: #cca6fd;
-  --border-radius: 1.5rem;
-  --border-radius2: 1.75rem;
+  --border-radius1: 1.12rem;
+  --border-radius2: 0.9rem;
   
-  --div-height-primary: 3.5rem;
-  --div-height-secondary: 3rem;
-
+  --div-height1: 2.25rem;
+  --div-height2: 1.8rem;
 }
